@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: rgba(173, 49, 231, 0.199);
+            border-radius: 15px;
+        }
+        .alert {
+            display: none;
+        }
+        .text-center{
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        body{
+            background-color: rgb(250, 250, 175);
+        }
+        section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center text */
+    padding: 20px; /* Optional padding for better spacing */
+}
+
+    </style>
+</head>
+<body>
+<section>
+    <div class="container">
+        <h2 class="text-center">Anniversary Form</h2>
+        <div class="alert alert-danger" id="error-alert">
+            <ul id="error-messages"></ul>
+        </div>
+        <form id="anniversaryForm">
+            <div class="form-group">
+                <label for="name">Enter your partner's first name:</label>
+                <input type="text" class="form-control" id="name" placeholder="ex: JUAN" required>
+            </div>
+            <div class="form-group">
+                <label for="partnerName">Enter your name:</label>
+                <input type="text" class="form-control" id="partnerName" placeholder="ex: DELA CRUZ" required>
+            </div>
+            <div class="form-group">
+                <label for="anniversaryDate">Enter the date of your 4th anniversary:</label>
+                <input type="text" class="form-control" id="anniversaryDate" placeholder="ex: OCTOBER22,2001" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+            <br>
+        </form>
+    </div>
+</section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('anniversaryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var name = document.getElementById('name').value;
+            var partnerName = document.getElementById('partnerName').value;
+            var anniversaryDate = document.getElementById('anniversaryDate').value;
+            
+            var errorMessages = [];
+            
+            if (name !== 'ANGELO') {
+                errorMessages.push('Invalid your name');
+            }
+            if (partnerName !== 'HAZEL') {
+                errorMessages.push('Invalid your partner\'s name');
+            }
+            if (anniversaryDate !== 'AUGUST21,2024') {
+                errorMessages.push('Invalid 4th anniversary date');
+            }
+            
+            if (errorMessages.length > 0) {
+                document.getElementById('error-messages').innerHTML = errorMessages.map(msg => `<li>${msg}</li>`).join('');
+                document.getElementById('error-alert').style.display = 'block';
+            } else {
+                window.location.href = 'https://angeloventura21.github.io/four_years_of_love/';
+            }
+        });
+    </script>
+</body>
+</html>
